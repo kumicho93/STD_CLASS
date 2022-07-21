@@ -27,7 +27,7 @@ CarData::~CarData( ) {}
 /* 作成日		： 2021/07/23		 崎山　勇人		 新規作成					*/
 /* 作成日		： 2022/07/16		 山田　龍之介	:新規作成					*/
 /* -------------------------------------------------------------------------	*/
-int8 CarData::update( )
+int8 CarData::update( void )
 {
 	//frLog &msg = frLog::GetInstance( );
 	int8 retChk = SYS_NG;
@@ -122,20 +122,19 @@ int8 CarData::calcOdometry( WheelDist* wheel_dist )
 
 	return SYS_OK;
 }
+
 /* -------------------------------------------------------------------------	*/
 /* 関数名		： getPos							    	    				*/
 /* 機能名		： 自己位置座標を取得 											*/
 /* 機能概要		： 自己位置座標を返す                   	   		   			*/
-/* 引数			： PositionData*    :car_pos        :座標格納用					*/
-/* 戻り値		： int8				:0				:正常終了					*/
+/* 引数			： none															*/
+/* 戻り値		： PositionData    :car_pos        :座標格納用					*/
 /* 作成日		： 2021/07/23		 崎山　勇人		 新規作成					*/
-/* 作成日		： 2022/07/16		 山田　龍之介	:新規作成					*/
+/* 作成日		： 2022/07/16		 山田　龍之介	 新規作成					*/
 /* -------------------------------------------------------------------------	*/
 CORDINATE CarData::getPos( void )
 {
-	*car_pos = position;
-
-	return SYS_OK;
+	return position;
 }
 /* -------------------------------------------------------------------------	*/
 /* 関数名		： setPos							    	    				*/
@@ -146,11 +145,10 @@ CORDINATE CarData::getPos( void )
 /* 作成日		： 2021/07/23		 崎山　勇人		 新規作成					*/
 /* 作成日		： 2022/07/16		 山田　龍之介	:新規作成					*/
 /* -------------------------------------------------------------------------	*/
-int8 CarData::setPos( CORDINATE set_pos )
+int8 CarData::setPos( CORDINATE coordinate )
 {
 	//frLog &msg = frLog::GetInstance();
-	position = set_pos;
-
+	position = coordinate;
 	return SYS_OK;
 }
 
@@ -158,23 +156,14 @@ int8 CarData::setPos( CORDINATE set_pos )
 /* 関数名		： getAngle							    	    				*/
 /* 機能名		： 自己位置角度を取得		            	    				*/
 /* 機能概要		： 自己位置角度を取得する                                       */
-/* 引数			： float*           :car_dir        :角度格納用					*/
-/* 戻り値		： int8				:0				:正常終了					*/
+/* 引数			： none															*/
+/* 戻り値		： float*           :angle        :角度格納用					*/
 /* 作成日		： 2021/07/23		 崎山　勇人		 新規作成					*/
 /* 作成日		： 2022/07/16		 山田　龍之介	:新規作成					*/
 /* -------------------------------------------------------------------------	*/
-int8 CarData::getAngle( float* car_dir )
+float CarData::getAngle( void )
 {
-	//frLog &msg = frLog::GetInstance( );
-	/* 引数チェック */
-	if ( car_dir == NULL ) {
-		//msg.LOG( LOG_ID_ERR, "CarPosition::getDir 引数エラー\n" );
-		return SYS_PARAM;
-	}
-
-	*car_dir = angle;
-
-	return SYS_OK;
+	return angle;
 }
 /* -------------------------------------------------------------------------	*/
 /* 関数名		： setAngle							    	    				*/
@@ -187,7 +176,6 @@ int8 CarData::getAngle( float* car_dir )
 /* -------------------------------------------------------------------------	*/
 int8 CarData::setAngle( float angle )
 {
-	
 	//frLog &msg = frLog::GetInstance();
 
 	/* 引数チェック */
@@ -198,7 +186,7 @@ int8 CarData::setAngle( float angle )
 	/*※　範囲がわからないため引数チェックができない 
 	0~-179? or 0~360?　追記　山田	*/
 
-	angle = angle;
+	car_angle = angle;
 
 	return SYS_OK;
 }

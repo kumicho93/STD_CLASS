@@ -9,18 +9,17 @@
 #define PI 3.141592653589793
 #define DIST (((PI) * (double)CAR_WHEEL_WIDTH) / 360.0f)
 
-// ????????????
 typedef struct WheelDist_s
 {
-	float left;  //?????
-	float right; //?????
+	float left;
+	float right;
 } WheelDist;
 
 class CarData
 {
 private:
 	CORDINATE position;
-	float angle;
+	float car_angle;
 
 	CarData( );
 	~CarData( );
