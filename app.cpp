@@ -10,11 +10,11 @@
 #include "ev3api.h"
 #include "app.h"
 #include "etroboc_ext.h"
-#include "workspace/inc/system.h"
+#include "workspace/include/system.h"
 
 
-#include "workspace/inc/LeftMotor.h"
-#include "workspace/inc/RightMotor.h"
+#include "workspace/include/LeftMotor.h"
+#include "workspace/include/RightMotor.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
