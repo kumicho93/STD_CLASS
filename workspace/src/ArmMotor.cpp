@@ -6,8 +6,6 @@ ArmMotor::ArmMotor()
 {
     portNum = EV3_PORT_C;
 	ev3_motor_config( static_cast<motor_port_t>(portNum), LARGE_MOTOR );
-    ArmMotor( const ArmMotor &x );
-	ArmMotor&operator=( const ArmMotor & ) { return *this; };
 }
 
 ArmMotor::~ArmMotor()
