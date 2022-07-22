@@ -1,6 +1,6 @@
-#include "../inc/system.h"
-#include "../inc/LeftMotor.h"
-#include "../inc/Motor.h"
+#include "../include/system.h"
+#include "../include/LeftMotor.h"
+#include "../include/Motor.h"
 
 LeftMotor::LeftMotor()
 {

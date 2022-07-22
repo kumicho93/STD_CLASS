@@ -1,5 +1,5 @@
-#include "../inc/system.h"
-#include "../inc/Motor.h"
+#include "../include/system.h"
+#include "../include/Motor.h"
 
 Motor::Motor( )
 {

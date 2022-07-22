@@ -1,5 +1,5 @@
-#include "../inc/system.h"
-#include "../inc/ArmMotor.h"
+#include "../include/system.h"
+#include "../include/ArmMotor.h"
 
 ArmMotor::ArmMotor()
 {
