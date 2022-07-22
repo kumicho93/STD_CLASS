@@ -1,12 +1,11 @@
 #pragma once
-#include"System.h"
+#include"system.h"
 #include"Motor.h"
 
 class LeftMotor:public Motor
 {
 private:
     /* data */
-    //motor_port_t left_motor;
 
     LeftMotor();
     ~LeftMotor();

@@ -1,9 +1,9 @@
-#include "System.h"
-#include "ArmMotor.h"
+#include "../inc/system.h"
+#include "../inc/ArmMotor.h"
 
 ArmMotor::ArmMotor()
 {
-    //ev3_motor_config( static_cast<motor_port_t>(arm_motor), type );
+    ev3_motor_config( static_cast<motor_port_t>(arm_motor), type );
 }
 
 ArmMotor::~ArmMotor()

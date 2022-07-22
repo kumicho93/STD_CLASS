@@ -1,13 +1,13 @@
-#include"Steering.h"
+#include"../inc/Steering.h"
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F steering														*/
-/* ‹@”\–¼		F ƒRƒ“ƒXƒgƒ‰ƒNƒ^												*/
-/* ‹@”\ŠT—v		F ƒƒ“ƒo[•Ï”‚Ì‰Šú‰»									        */
-/* ˆø”			F ‚È‚µ															*/
-/* –ß‚è’l		F ‚È‚µ                                     					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		:V‹Kì¬					*/
-/* XV“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:—¬—p						*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F steering														*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^												*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½[ï¿½Ïï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½									        */
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F ï¿½È‚ï¿½															*/
+/* ï¿½ß‚ï¿½l		ï¿½F ï¿½È‚ï¿½                                     					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		:ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½Xï¿½Vï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½ï¿½ï¿½p						*/
 /* -------------------------------------------------------------------------	*/
 Steering::Steering( )
 {
@@ -18,35 +18,35 @@ Steering::Steering( )
 Steering::~Steering( ) {}
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F run									    					*/
-/* ‹@”\–¼		F ƒ‚[ƒ^§Œä       											*/
-/* ‹@”\ŠT—v		F ƒ‚[ƒ^‚ð§Œä‚·‚é             								*/
-/* ˆø”			F int32            :motor_power    :ƒ‚[ƒ^‚Ö‚Ìo—Í’l			*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		:V‹Kì¬					*/
-/* XV“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:—¬—p						*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F run									    					*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½       											*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½ð§Œä‚·ï¿½ï¿½             								*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F int32            :motor_power    :ï¿½ï¿½ï¿½[ï¿½^ï¿½Ö‚Ìoï¿½Í’l			*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		:ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½Xï¿½Vï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½ï¿½ï¿½p						*/
 /* -------------------------------------------------------------------------	*/
 int8 Steering::run( MOTOR_POWER motor_power )
 {
 	//frLog &msg = frLog::GetInstance( );
-	/* ˆø”ƒ`ƒFƒbƒN */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N */
 	if ( motor_power.left < -100 || motor_power.left > 100 ||
 		motor_power.right < -100 || motor_power.right > 100 )
 	{
-		//msg.LOG( LOG_ID_ERR, "Steering::rotateWheel ˆø”ƒGƒ‰[\n" );
+		//msg.LOG( LOG_ID_ERR, "Steering::rotateWheel ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[\n" );
 		return SYS_PARAM;
 	}
 
-	/* •Ï”éŒ¾ */
+	/* ï¿½Ïï¿½ï¿½éŒ¾ */
 	int8 retChk = SYS_NG;
 
-	/* ‰Eƒ‚[ƒ^@PWMset */
+	/* ï¿½Eï¿½ï¿½ï¿½[ï¿½^ï¿½@PWMset */
 	retChk = rightMotor.setPWM( motor_power.right );
 	if ( retChk != SYS_OK ) {
 		//msg.LOG( LOG_ID_ERR, "Steering::rotateWheel setPWM right err\n" );
 		return retChk;
 	}
-	/* ¶ƒ‚[ƒ^@PWMset */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½@PWMset */
 	retChk = leftMotor.setPWM( motor_power.left );
 	if ( retChk != SYS_OK ) {
 		//msg.LOG( LOG_ID_ERR, "Steering::rotateWheel setPWM left err\n" );
@@ -57,13 +57,13 @@ int8 Steering::run( MOTOR_POWER motor_power )
 }
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F getMotorAngle								    			*/
-/* ‹@”\–¼		F ƒ‚[ƒ^Šp“xŽæ“¾       										*/
-/* ‹@”\ŠT—v		F ƒ‚[ƒ^Šp“x‚ðŽæ“¾‚·‚é           								*/
-/* ˆø”			F none															*/
-/* –ß‚è’l		F MotorAngle       :motor_angle        :Šp“xŠi”[—p				*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		:V‹Kì¬					*/
-/* XV“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:—¬—p						*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F getMotorAngle								    			*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½æ“¾       										*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½           								*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F none															*/
+/* ï¿½ß‚ï¿½l		ï¿½F MotorAngle       :motor_angle        :ï¿½pï¿½xï¿½iï¿½[ï¿½p				*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		:ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½Xï¿½Vï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½ï¿½ï¿½p						*/
 /* -------------------------------------------------------------------------	*/
 MOTOR_ANGLE Steering::getMotorAngle( void )
 {
@@ -72,26 +72,26 @@ MOTOR_ANGLE Steering::getMotorAngle( void )
 }
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F update		  								    			*/
-/* ‹@”\–¼		F ƒ‚[ƒ^Šp“xXV       										*/
-/* ‹@”\ŠT—v		F ƒ‚[ƒ^Šp“x‚ðXV‚·‚é           								*/
-/* ˆø”			F ‚È‚µ															*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		:V‹Kì¬					*/
-/* XV“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:XV						*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F update		  								    			*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½Xï¿½V       										*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½           								*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F ï¿½È‚ï¿½															*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		:ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½Xï¿½Vï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Xï¿½V						*/
 /* -------------------------------------------------------------------------	*/
 int8 Steering::update( )
 {
 	//frLog &msg = frLog::GetInstance( );
-	int8 retChk = SYS_NG;                       /* ƒGƒ‰[ƒtƒ‰ƒO                    */
+	int8 retChk = SYS_NG;                       /* ï¿½Gï¿½ï¿½ï¿½[ï¿½tï¿½ï¿½ï¿½O                    */
 
-	/* ¶ƒ‚[ƒ^‰ñ“]Špget */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½ï¿½]ï¿½pget */
 	motor_angle.left = leftMotor.getCounts( );
 
-	/* ‰Eƒ‚[ƒ^‰ñ“]Špget */
+	/* ï¿½Eï¿½ï¿½ï¿½[ï¿½^ï¿½ï¿½]ï¿½pget */
 	motor_angle.right = rightMotor.getCounts( );
 	
-	/* ¬‚³‚ÈŒë·‚Í^‚Á’¼‚®‚Éi‚ñ‚Å‚¢‚é”»’è‚É‚·‚é  */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ÈŒë·ï¿½Í^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éiï¿½ï¿½Å‚ï¿½ï¿½é”»ï¿½ï¿½É‚ï¿½ï¿½ï¿½  */
 	if ( motor_angle.right - motor_angle.left < 3 &&
 		motor_angle.right - motor_angle.left>0 ) {
 
@@ -106,13 +106,13 @@ int8 Steering::update( )
 	return SYS_OK;
 }
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F deletePort     								    			*/
-/* ‹@”\–¼		F        			                							*/
-/* ‹@”\ŠT—v		F ƒƒ“ƒo[•Ï”‚Ì‰ð•ú           								*/
-/* ˆø”			F ‚È‚µ															*/
-/* –ß‚è’l		F ‚È‚µ                                     					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		:V‹Kì¬					*/
-/* XV“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:—¬—p						*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F deletePort     								    			*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F        			                							*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½[ï¿½Ïï¿½ï¿½Ì‰ï¿½ï¿½           								*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F ï¿½È‚ï¿½															*/
+/* ï¿½ß‚ï¿½l		ï¿½F ï¿½È‚ï¿½                                     					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		:ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½Xï¿½Vï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½ï¿½ï¿½p						*/
 /* -------------------------------------------------------------------------	*/
 int8 Steering::deletePort( ) {
 	//delete (&leftMotor);

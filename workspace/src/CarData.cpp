@@ -1,13 +1,13 @@
-#include "CarData.h"
+#include "../inc/CarData.h"
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F CarPosition				              	    				*/
-/* ‹@”\–¼		F ƒRƒ“ƒXƒgƒ‰ƒNƒ^                                  				*/
-/* ‹@”\ŠT—v		F À•W‚ÆŒü‚«‚Ì‰Šú‰»                          					*/
-/* ˆø”			F ‚È‚µ															*/
-/* –ß‚è’l		F ‚È‚µ                                     					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F CarPosition				              	    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^                                  				*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½Wï¿½ÆŒï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½                          					*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F ï¿½È‚ï¿½															*/
+/* ï¿½ß‚ï¿½l		ï¿½F ï¿½È‚ï¿½                                     					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 CarData::CarData( )
 {
@@ -19,13 +19,13 @@ CarData::CarData( )
 
 CarData::~CarData( ) {}
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F update									    				*/
-/* ‹@”\–¼		F XV       													*/
-/* ‹@”\ŠT—v		F Ž©ŒÈˆÊ’u‚ðXV‚·‚é                   						*/
-/* ˆø”			F ‚È‚µ															*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F update									    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½Xï¿½V       													*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½                   						*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F ï¿½È‚ï¿½															*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 int8 CarData::update( void )
 {
@@ -40,19 +40,19 @@ int8 CarData::update( void )
 	memset( &nowAngle, 0, sizeof( MOTOR_ANGLE ) );
 	memset( &wheelDist, 0, sizeof( WheelDist ) );
 
-	/* ƒ‚[ƒ^‚ÌŠp“x·ˆÙŽæ“¾ -------------------------------------------- */
+	/* ï¿½ï¿½ï¿½[ï¿½^ï¿½ÌŠpï¿½xï¿½ï¿½ï¿½ÙŽæ“¾ -------------------------------------------- */
 
-	// ‘O‰ñƒ‚[ƒ^Šp“xŽæ“¾
+	// ï¿½Oï¿½ñƒ‚[ï¿½^ï¿½pï¿½xï¿½æ“¾
 	preAngle = steering.getMotorAngle( );
 	
-	// ƒ‚[ƒ^Šp“xXV
+	// ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½Xï¿½V
 	retChk = steering.update( );
 	if ( retChk != SYS_OK ) {
 		//msg.LOG( LOG_ID_ERR, "CarPos::update updateAngle err\n" );
 		return retChk;
 	}
 
-	// ÅVƒ‚[ƒ^Šp“xŽæ“¾
+	// ï¿½ÅVï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½xï¿½æ“¾
 	nowAngle = steering.getMotorAngle( );
 
 	wheelDist.left = (float)(nowAngle.left - preAngle.left);
@@ -61,7 +61,7 @@ int8 CarData::update( void )
 	wheelDist.left *= DIST;
 	wheelDist.right *= DIST;
 
-	/* ŒvŽZ‚µXV */
+	/* ï¿½vï¿½Zï¿½ï¿½ï¿½Xï¿½V */
 	retChk = calcOdometry( &wheelDist );
 	if ( retChk != SYS_OK ) {
 		//msg.LOG( LOG_ID_ERR, "CarPos::update calcOdometry err\n" );
@@ -69,7 +69,7 @@ int8 CarData::update( void )
 	}
 	
 	if ( angle >= 600 || angle <= -600 ) {
-		//msg.LOG( LOG_ID_ERR, "ŽÔ‘ÌŠp“x‚ªˆÙí‚Ì‚½‚ß‹­§I—¹\n" );
+		//msg.LOG( LOG_ID_ERR, "ï¿½Ô‘ÌŠpï¿½xï¿½ï¿½ï¿½Ùï¿½Ì‚ï¿½ï¿½ß‹ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½\n" );
 		
 		act_tsk( END_TASK );
 		return SYS_NG;
@@ -78,19 +78,19 @@ int8 CarData::update( void )
 }
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F calcOdometry								    				*/
-/* ‹@”\–¼		F ƒIƒhƒƒgƒŠŒvŽZ 												*/
-/* ‹@”\ŠT—v		F ƒIƒhƒƒgƒŠŒvŽZ‚ðs‚¤                   	   					*/
-/* ˆø”			F WheelDist*       :wheel_dist     :—¼ƒ‚[ƒ^‚Ì·•ª				*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F calcOdometry								    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½Iï¿½hï¿½ï¿½ï¿½gï¿½ï¿½ï¿½vï¿½Z 												*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½Iï¿½hï¿½ï¿½ï¿½gï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½sï¿½ï¿½                   	   					*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F WheelDist*       :wheel_dist     :ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½Ìï¿½ï¿½ï¿½				*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 int8 CarData::calcOdometry( WheelDist* wheel_dist )
 {
 	//frLog &msg = frLog::GetInstance( );
 	if ( wheel_dist == NULL ) {
-		//msg.LOG( LOG_ID_ERR, "CarPosition::calcOdometry ˆø”ƒGƒ‰[\n" );
+		//msg.LOG( LOG_ID_ERR, "CarPosition::calcOdometry ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[\n" );
 		return SYS_PARAM;
 	}
 	float  angle = 0.0f;
@@ -101,49 +101,49 @@ int8 CarData::calcOdometry( WheelDist* wheel_dist )
 
 	memset( &addPos, 0, sizeof( CORDINATE ) );
 
-	/* À•WŒvŽZ */
+	/* ï¿½ï¿½ï¿½Wï¿½vï¿½Z */
 	dist = (double)(wheel_dist->right + wheel_dist->left) / 2.0;
 	angle = (360.0f / (2.0f * PI * CAR_WIDTH)) * (wheel_dist->left - wheel_dist->right);
 
-	/* Šp“x‚ðƒ‰ƒWƒAƒ“•ÏŠ· */
+	/* ï¿½pï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Aï¿½ï¿½ï¿½ÏŠï¿½ */
 	addRad = ((double)(angle)) * (PI / 180.0f);
 	rad = ((double)(angle)) * (PI / 180.0f);
 
-	/* /2.0f‚¢‚é‚©‚í‚©‚ñ‚È‚¢ */
+	/* /2.0fï¿½ï¿½ï¿½é‚©ï¿½í‚©ï¿½ï¿½È‚ï¿½ */
 	addPos.x = (float)-(dist * std::sin( rad + addRad / 2.0f ));
 	addPos.y = (float)(dist * std::cos( rad + addRad / 2.0f ));
 
-	/* À•WXV */
+	/* ï¿½ï¿½ï¿½Wï¿½Xï¿½V */
 	position.x += addPos.x;
 	position.y += addPos.y;
 
-	/* Šp“xXV */
+	/* ï¿½pï¿½xï¿½Xï¿½V */
 	angle += angle;
 
 	return SYS_OK;
 }
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F getPos							    	    				*/
-/* ‹@”\–¼		F Ž©ŒÈˆÊ’uÀ•W‚ðŽæ“¾ 											*/
-/* ‹@”\ŠT—v		F Ž©ŒÈˆÊ’uÀ•W‚ð•Ô‚·                   	   		   			*/
-/* ˆø”			F none															*/
-/* –ß‚è’l		F PositionData    :car_pos        :À•WŠi”[—p					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	 V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F getPos							    	    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½æ“¾ 											*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½ï¿½ï¿½Wï¿½ï¿½Ô‚ï¿½                   	   		   			*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F none															*/
+/* ï¿½ß‚ï¿½l		ï¿½F PositionData    :car_pos        :ï¿½ï¿½ï¿½Wï¿½iï¿½[ï¿½p					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	 ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 CORDINATE CarData::getPos( void )
 {
 	return position;
 }
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F setPos							    	    				*/
-/* ‹@”\–¼		F Ž©ŒÈˆÊ’uÀ•W(x,y)‚ðã‘‚« 									*/
-/* ‹@”\ŠT—v		F Ž©ŒÈˆÊ’uÀ•W(x,y)‚ðã‘‚«‚·‚é                   				*/
-/* ˆø”			F PositionData     :set_pos        :À•W						*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F setPos							    	    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½ï¿½ï¿½W(x,y)ï¿½ï¿½ï¿½ã‘ï¿½ï¿½ 									*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½ï¿½ï¿½W(x,y)ï¿½ï¿½ï¿½ã‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                   				*/
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F PositionData     :set_pos        :ï¿½ï¿½ï¿½W						*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 int8 CarData::setPos( CORDINATE coordinate )
 {
@@ -153,38 +153,38 @@ int8 CarData::setPos( CORDINATE coordinate )
 }
 
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F getAngle							    	    				*/
-/* ‹@”\–¼		F Ž©ŒÈˆÊ’uŠp“x‚ðŽæ“¾		            	    				*/
-/* ‹@”\ŠT—v		F Ž©ŒÈˆÊ’uŠp“x‚ðŽæ“¾‚·‚é                                       */
-/* ˆø”			F none															*/
-/* –ß‚è’l		F float*           :angle        :Šp“xŠi”[—p					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F getAngle							    	    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½pï¿½xï¿½ï¿½ï¿½æ“¾		            	    				*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½pï¿½xï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½                                       */
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F none															*/
+/* ï¿½ß‚ï¿½l		ï¿½F float*           :angle        :ï¿½pï¿½xï¿½iï¿½[ï¿½p					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 float CarData::getAngle( void )
 {
 	return angle;
 }
 /* -------------------------------------------------------------------------	*/
-/* ŠÖ”–¼		F setAngle							    	    				*/
-/* ‹@”\–¼		F Ž©ŒÈˆÊ’uŠp“x‚ðã‘‚«		            	    				*/
-/* ‹@”\ŠT—v		F Ž©ŒÈˆÊ’uŠp“x‚ðã‘‚«‚·‚é                                     */
-/* ˆø”			F float            :angle          :Šp“x						*/
-/* –ß‚è’l		F int8				:0				:³íI—¹					*/
-/* ì¬“ú		F 2021/07/23		 èŽR@—El		 V‹Kì¬					*/
-/* ì¬“ú		F 2022/07/16		 ŽR“c@—´”V‰î	:V‹Kì¬					*/
+/* ï¿½Öï¿½ï¿½ï¿½		ï¿½F setAngle							    	    				*/
+/* ï¿½@ï¿½\ï¿½ï¿½		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½pï¿½xï¿½ï¿½ï¿½ã‘ï¿½ï¿½		            	    				*/
+/* ï¿½@ï¿½\ï¿½Tï¿½v		ï¿½F ï¿½ï¿½ï¿½ÈˆÊ’uï¿½pï¿½xï¿½ï¿½ï¿½ã‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     */
+/* ï¿½ï¿½ï¿½ï¿½			ï¿½F float            :angle          :ï¿½pï¿½x						*/
+/* ï¿½ß‚ï¿½l		ï¿½F int8				:0				:ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2021/07/23		 ï¿½ï¿½Rï¿½@ï¿½Eï¿½l		 ï¿½Vï¿½Kï¿½ì¬					*/
+/* ï¿½ì¬ï¿½ï¿½		ï¿½F 2022/07/16		 ï¿½Rï¿½cï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½	:ï¿½Vï¿½Kï¿½ì¬					*/
 /* -------------------------------------------------------------------------	*/
 int8 CarData::setAngle( float angle )
 {
 	//frLog &msg = frLog::GetInstance();
 
-	/* ˆø”ƒ`ƒFƒbƒN */
-	/* ”ÍˆÍ‚Åˆø”ƒ`ƒFƒbƒN‚ª•K—v
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N */
+	/* ï¿½ÍˆÍ‚Åˆï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½Nï¿½ï¿½ï¿½Kï¿½v
 		return SYS_NG;
 	*/
 
-	/*¦@”ÍˆÍ‚ª‚í‚©‚ç‚È‚¢‚½‚ßˆø”ƒ`ƒFƒbƒN‚ª‚Å‚«‚È‚¢ 
-	0~-179? or 0~360?@’Ç‹L@ŽR“c	*/
+	/*ï¿½ï¿½ï¿½@ï¿½ÍˆÍ‚ï¿½ï¿½í‚©ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ßˆï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½Nï¿½ï¿½ï¿½Å‚ï¿½ï¿½È‚ï¿½ 
+	0~-179? or 0~360?ï¿½@ï¿½Ç‹Lï¿½@ï¿½Rï¿½c	*/
 
 	car_angle = angle;
 

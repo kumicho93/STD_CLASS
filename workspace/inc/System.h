@@ -3,20 +3,19 @@
 #include <string.h>
 #include <memory>
 #include <string>
-#include "Driver.h"
 
 #define CORRECTIONDATA_ON
-#define SYS_OK 0    //³íI—¹
-#define SYS_NG 1    //ˆÙíI—¹
-#define SYS_PARAM 2 //ˆø”ƒGƒ‰[
+#define SYS_OK 0    //ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½
+#define SYS_NG 1    //ï¿½Ùï¿½Iï¿½ï¿½
+#define SYS_PARAM 2 //ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[
 #define TIMEATTACK_NUM 21//21
 #define SLALOMEEBUI_NUM 21//21
 #define SLALOMEIFIE_NUM 16//16
 #define SLALOMBLACKY_NUM 16//16
 #define GARAGE_NUM 26
 
-#define CAR_WIDTH 134.22f      //Ô‘Ì‚Ì•(mm)
-#define CAR_WHEEL_WIDTH 90.33f //Ô—Ö‚Ì’¼Œa(mm)
+#define CAR_WIDTH 134.22f      //ï¿½Ô‘Ì‚Ì•ï¿½(mm)
+#define CAR_WHEEL_WIDTH 90.33f //ï¿½Ô—Ö‚Ì’ï¿½ï¿½a(mm)
 
 // integer 8bit
 using int8 = int8_t;
@@ -48,8 +47,8 @@ using intptr = intptr_t;
 // uint pointer
 using uintptr = uintptr_t;
 
-/* —ñ‹“Œ^‚Ì’è‹` */
-// Ø‚è‘Ö‚¦”»’èí•Ê
+/* ï¿½ñ‹“Œ^ï¿½Ì’ï¿½` */
+// ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 enum JudgeType
 {
 	JUDGE_NONE,
@@ -59,27 +58,27 @@ enum JudgeType
 	JUDGE_DIR,
 	JUDGE_V,
 	JUDGE_S,
-	JUDGE_SEND,//•â³ŒÀ’èg—p
+	JUDGE_SEND,//ï¿½â³ï¿½ï¿½ï¿½ï¿½gï¿½p
 };
 
-//ƒ‚[ƒ^[ƒ|[ƒg”Ô†
+//ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½|ï¿½[ï¿½gï¿½Ôï¿½
 enum MotorPort
 {
-	MOTOR_ARM,   //ƒA[ƒ€ƒ‚[ƒ^[
-	MOTOR_RIGHT, //‰E—Öƒ‚[ƒ^[
-	MOTOR_LEFT,  //¶—Öƒ‚[ƒ^[
-	MOTOR_TAIL,  //K”öƒ‚[ƒ^[
+	MOTOR_ARM,   //ï¿½Aï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[
+	MOTOR_RIGHT, //ï¿½Eï¿½Öƒï¿½ï¿½[ï¿½^ï¿½[
+	MOTOR_LEFT,  //ï¿½ï¿½ï¿½Öƒï¿½ï¿½[ï¿½^ï¿½[
+	MOTOR_TAIL,  //ï¿½Kï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[
 };
 
 enum SensorPort
 {
-	SENSOR_TOUCH, //ƒ^ƒbƒ`ƒZƒ“ƒT[
-	SENSOR_COLOR, //ƒJƒ‰[ƒZƒ“ƒT[
-	SENSOR_SONAR, //’´‰¹”gƒZƒ“ƒT[
-	SENSOR_GYRO,  //ƒWƒƒƒCƒƒZƒ“ƒT[
+	SENSOR_TOUCH, //ï¿½^ï¿½bï¿½`ï¿½Zï¿½ï¿½ï¿½Tï¿½[
+	SENSOR_COLOR, //ï¿½Jï¿½ï¿½ï¿½[ï¿½Zï¿½ï¿½ï¿½Tï¿½[
+	SENSOR_SONAR, //ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Zï¿½ï¿½ï¿½Tï¿½[
+	SENSOR_GYRO,  //ï¿½Wï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½Tï¿½[
 };
 
-// ”»’è—pğŒ
+// ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½
 enum Range
 {
 	HIGH,
@@ -87,7 +86,7 @@ enum Range
 	NONE,
 };
 
-// “®ìí•Ê
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 enum ActionType
 {
 	LINE_TRACE,
@@ -99,15 +98,15 @@ enum ActionType
 	ARMDOWN_ACTION,
 };
 
-// ƒJ[ƒu‚Ìis•ûŒü
+// ï¿½Jï¿½[ï¿½uï¿½Ìiï¿½sï¿½ï¿½ï¿½ï¿½
 enum CurveType
 {
 	CURVE_LEFT,
 	CURVE_RIGHT,
 };
 
-/* \‘¢‘Ì’è‹` */
-// RGB‚Ì\‘¢‘Ì
+/* ï¿½\ï¿½ï¿½ï¿½Ì’ï¿½` */
+// RGBï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct RGB_TAG {
 	uint16 r;
 	uint16 g;
@@ -115,75 +114,75 @@ typedef struct RGB_TAG {
 	Range condition;
 }RGBData;
 
-// •ûŒüî•ñ‚Ì\‘¢‘Ì
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct Direction_TAG {
 	float direction;
 	Range condition;
 }DirectionData;
 
-//ƒJ[ƒuî•ñ‚Ì\‘¢‘Ì
+//ï¿½Jï¿½[ï¿½uï¿½ï¿½ï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct CurveData_TAG {
 	float radius;
 	CurveType dirction;
 }CurveData;
 
-//v’lî•ñ‚Ì\‘¢‘Ì
+//vï¿½lï¿½ï¿½ï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct V_TAG {
 	uint16 v;
 	Range condition;
 }VData;
 
-//s’lî•ñ‚Ì\‘¢‘Ì
+//sï¿½lï¿½ï¿½ï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct S_TAG {
 	uint16 s;
 	Range condition;
 }SData;
 
 
-// À•W‚Ì\‘¢‘Ì
+// ï¿½ï¿½ï¿½Wï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct Position_TAG {
 	float x;
 	float y;
 }CORDINATE;
 
-// À•Wî•ñ‚Ì\‘¢‘Ì
+// ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Ì\ï¿½ï¿½ï¿½ï¿½
 typedef struct PositionTAG {
 	CORDINATE potision;
 	Range xCondition;
 	Range yCondition;
 }PosInfoData;
 
-// ƒ‚[ƒ^ƒpƒ[
+// ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½ï¿½ï¿½[
 typedef struct MotorPower_TAG {
 	int32 right;
 	int32 left;
 }MOTOR_POWER;
 
-// ƒ‚[ƒ^Šp“x
+// ï¿½ï¿½ï¿½[ï¿½^ï¿½pï¿½x
 typedef struct MotorAngle_TAG {
 	int32 right;
 	int32 left;
 }MOTOR_ANGLE;
 
-// ¶‰E‚ÌÔ—Ö‚ÌˆÚ“®—Ê‚ğŠi”[
+// ï¿½ï¿½ï¿½Eï¿½ÌÔ—Ö‚ÌˆÚ“ï¿½ï¿½Ê‚ï¿½ï¿½iï¿½[
 typedef struct WheelDist_s
 {
-	float left;  //¶—ÖˆÚ“®—Ê
-	float right; //‰E—ÖˆÚ“®—Ê
+	float left;  //ï¿½ï¿½ï¿½ÖˆÚ“ï¿½ï¿½ï¿½
+	float right; //ï¿½Eï¿½ÖˆÚ“ï¿½ï¿½ï¿½
 } WheelDist;
 
 
-// Ø‚è‘Ö‚¦—pî•ñ
+// ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½ï¿½ï¿½
 typedef struct ChangeInfo_Tag {
-	RGBData rgb_data;		            // Ø‚è‘Ö‚¦—p‚ÌRGB’l
-	PosInfoData pos_info_data;		    // Ø‚è‘Ö‚¦—p‚ÌÀ•W
-	DirectionData direction_data;	// Ø‚è‘Ö‚¦—p‚Ì‹@‘Ì‚ÌŒü‚«
-	uint8 distance;		            // Ø‚è‘Ö‚¦—p‚Ì’´‰¹”g‹——£
-	VData vData;					//Ø‚è‘Ö‚¦—p‚Ìv’l
-	SData sData;					//Ø‚è‘Ö‚¦—p‚Ìs’l
-	JudgeType judge;		                // Ø‚è‘Ö‚¦’l‚Ì”»’è		—áFƒ|ƒWƒVƒ‡ƒ“‚ÌØ‚è‘Ö‚¦‚ğs‚¢‚½‚¢‚È‚çAJUDGE_POS‚ğ“ü‚ê‚é			
-	ActionType section_act;	        	// ƒV[ƒ“‚Ì“®ì‚ğ“ü‚ê‚é		—áFƒ‰ƒCƒ“ƒgƒŒ[ƒX‚ÌƒV[ƒ“‚È‚çALINE_TRACE‚ğ“ü‚ê‚é			
-	int32 speed;		            // ‚±‚ÌƒV[ƒ“‚Ì–Ú•W‘¬“x					
+	RGBData rgb_data;		            // ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½ï¿½RGBï¿½l
+	PosInfoData pos_info_data;		    // ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½Ìï¿½ï¿½W
+	DirectionData direction_data;	// ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½Ì‹@ï¿½Ì‚ÌŒï¿½ï¿½ï¿½
+	uint8 distance;		            // ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½Ì’ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
+	VData vData;					//ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½ï¿½vï¿½l
+	SData sData;					//ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½pï¿½ï¿½sï¿½l
+	JudgeType judge;		                // ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½lï¿½Ì”ï¿½ï¿½ï¿½		ï¿½ï¿½Fï¿½|ï¿½Wï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌØ‚ï¿½Ö‚ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½AJUDGE_POSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½			
+	ActionType section_act;	        	// ï¿½Vï¿½[ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		ï¿½ï¿½Fï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½Xï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½È‚ï¿½ALINE_TRACEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½			
+	int32 speed;		            // ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì–Ú•Wï¿½ï¿½ï¿½x					
 }ChangeInfo;
 
 typedef struct PositionCorrection_TAG {
@@ -200,8 +199,8 @@ typedef struct PositionCorrection_TAG {
 
 typedef struct PIDData_Tag
 {
-	float pGain; //”ä—áƒQƒCƒ“	
-	float iGain; //Ï•ªƒQƒCƒ“	
-	float dGain; //”÷•ªƒQƒCƒ“	
-	float targetVal; //–Ú•W’l	
+	float pGain; //ï¿½ï¿½ï¿½Qï¿½Cï¿½ï¿½	
+	float iGain; //ï¿½Ï•ï¿½ï¿½Qï¿½Cï¿½ï¿½	
+	float dGain; //ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½Cï¿½ï¿½	
+	float targetVal; //ï¿½Ú•Wï¿½l	
 }PIDData;

@@ -1,5 +1,5 @@
 #pragma once
-#include"System.h"
+#include"system.h"
 #include"Motor.h"
 
 class ArmMotor:public Motor
